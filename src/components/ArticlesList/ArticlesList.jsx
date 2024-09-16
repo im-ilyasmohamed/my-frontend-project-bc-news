@@ -27,16 +27,17 @@ function ArticlesList() {
         // handle success
 
         setArticles(response.data.allArticles);
-        setLoading(false);
+        setLoading(false); // so can render return statement below
       })
       .catch((error) => {
         // handle error
-        setLoading(false);
+        setLoading(false); // stops the loading state, as if cant get the data
       });
   }, []); // important to have a dependency array even if blank, this ensures that the resource is not loaded on every render, i.e. only set on first mount and not rerendered
 
   return (
     <div id="product-list-homepage">
+      {/* state 1 - Loading state, state 2 - article.length> 0, state 3 - No articles found state */}
       {loading ? (
         <p>Loading articles...</p>
       ) : articles.length > 0 ? (
