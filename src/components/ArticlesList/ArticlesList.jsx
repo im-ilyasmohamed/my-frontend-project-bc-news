@@ -12,6 +12,7 @@ const apiClient = axios.create({
 //
 function ArticlesList() {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true); // was getting an error, return in the jsx below would not render, this is because the render was happening before the data was fetched from the api, instead I put in a conditional, when it loads it will then show!
 
   function helperFunction() {
     console.log(articles, "useState");
@@ -24,23 +25,27 @@ function ArticlesList() {
       .get("/api/articles")
       .then((response) => {
         // handle success
-        console.log(response.data.allArticles);
+
         setArticles(response.data.allArticles);
+        setLoading(false);
       })
       .catch((error) => {
         // handle error
+        setLoading(false);
       });
-  }, []); // important to have a dependency array even if blank, this ensures that the resource is not loaded on every render
+  }, []); // important to have a dependency array even if blank, this ensures that the resource is not loaded on every render, i.e. only set on first mount and not rerendered
 
   return (
     <div id="product-list-homepage">
-      {articles.length > 0 ? (
+      {loading ? (
+        <p>Loading articles...</p>
+      ) : articles.length > 0 ? (
         articles.map((article_item, key) => {
           console.log(article_item);
           return <ArticleCard article_item={article_item} key={key} />;
         })
       ) : (
-        <p>Loading articles...</p>
+        <p>No articles found</p>
       )}
     </div>
   );
