@@ -4,3 +4,32 @@
   padding: 2rem;
   text-align: center;
 }
+
+/* 
+* ARTICLE HOMEPAGE
+*/
+#product-list-homepage {
+  margin: 0 auto; /* Centre */
+  max-width: 80%; /* width */
+}
+#article-card-homepage {
+  height: 200px;
+  display: flex;
+  padding: 10px;
+  border: 1px solid #f1f1f1; /* Add a border */
+  background-color: #e7e7e7;
+  margin: 20px;
+}
+.img-article-card-homepage {
+  max-height: 100%;
+  max-width: 30%;
+  padding: 10px;
+}
+/* text-ellipsis for p tag to stop overflow */
+.p-text-ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 800px;
+}

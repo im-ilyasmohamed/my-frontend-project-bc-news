@@ -8,7 +8,9 @@ function ArticleCard({ article_item }) {
       />
       <div>
         <h3>{article_item.title}</h3>
-        <p>{article_item.body}</p>
+        <h4>{article_item.topic}</h4>
+        <p className="p-text-ellipsis">{article_item.body}</p>
+        <button type="button">Read Article</button>
       </div>
     </div>
   );
