@@ -5,38 +5,31 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* 
+* ARTICLE HOMEPAGE
+*/
+#product-list-homepage {
+  margin: 0 auto; /* Centre */
+  max-width: 80%; /* width */
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+#article-card-homepage {
+  height: 200px;
+  display: flex;
+  padding: 10px;
+  border: 1px solid #f1f1f1; /* Add a border */
+  background-color: #e7e7e7;
+  margin: 20px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.img-article-card-homepage {
+  max-height: 100%;
+  max-width: 30%;
+  padding: 10px;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* text-ellipsis for p tag to stop overflow */
+.p-text-ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 800px;
 }
