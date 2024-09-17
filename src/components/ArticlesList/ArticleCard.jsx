@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-function ArticleCard({ article_item, setCurrentArticle }) {
+function ArticleCard({ article_item, setCurrentArticleIndividual }) {
   function handleButtonSetArticle() {
-    setCurrentArticle(article_item);
+    setCurrentArticleIndividual(article_item);
   }
   return (
     <div id="article-card-homepage" kay={article_item.article_id}>

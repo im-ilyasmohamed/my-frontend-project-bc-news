@@ -17,10 +17,12 @@ const apiClient = axios.create({
 function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true); // was getting an error, return in the jsx below would not render, this is because the render was happening before the data was fetched from the api, instead I put in a conditional, when it loads it will then show!
-  const [currentArticle, setCurrentArticle] = useState(undefined); // currentArticle sets article to be displayed in /article, where the main article page is
+  const [currentArticleIndividual, setCurrentArticleIndividual] =
+    useState(undefined);
+  // currentArticle sets article to be displayed in /article, where the main article page is
   function helperFunction() {
     console.log(
-      currentArticle,
+      currentArticleIndividual,
       "currentArticle useState(), for displaying big article"
     );
   }
@@ -46,7 +48,7 @@ function App() {
         <Link to="/">
           <button type="button">Home</button>
         </Link>
-        <p>Header</p>
+        <span> ...Header pending... </span>
       </div>
       <Routes>
         <Route
@@ -55,7 +57,7 @@ function App() {
             <ArticlesList
               articles={articles}
               loading={loading}
-              setCurrentArticle={setCurrentArticle}
+              setCurrentArticleIndividual={setCurrentArticleIndividual}
             />
           }
         />
@@ -64,7 +66,7 @@ function App() {
           element={
             <>
               <ArticleIndividual
-                //currentArticleIndividual={currentArticleIndividual}
+                currentArticleIndividual={currentArticleIndividual}
                 loading={loading}
               />
             </>
