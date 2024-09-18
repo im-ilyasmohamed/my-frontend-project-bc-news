@@ -12,6 +12,8 @@ function ArticleIndividual() {
       .get(`/api/articles/${article_id}`)
       .then((response) => {
         const articleItem = response.data.articleItem[0];
+        console.log(articleItem);
+
         setArticle(articleItem);
         setLoading(false);
       })
@@ -20,7 +22,26 @@ function ArticleIndividual() {
         setLoading(false);
       });
   }, []);
+  function handleVoteButton(event) {
+    // typeof is string, so make int
+    const updateVote = parseInt(event.target.value);
 
+    // make patch request
+    apiClient
+      .patch(`/api/articles/${article_id}`, {
+        inc_votes: updateVote,
+      })
+      .then((response) => {
+        // dont do anything with response, as OPTIMISTIC LOADING is used
+        setArticle((prevArticleItem) => ({
+          ...prevArticleItem,
+          votes: prevArticleItem.votes + updateVote,
+        }));
+      })
+      .catch((error) => {
+        console.error("Error updating votes:", error);
+      });
+  }
   return (
     <>
       {/* api Load states renders */}
@@ -38,6 +59,17 @@ function ArticleIndividual() {
               <h3>{article.title}</h3>
               <h4>{article.topic}</h4>
               <p>{article.body}</p>
+              <div>
+                <h4>Votes: {article.votes}</h4>
+                <button value={1} onClick={handleVoteButton}>
+                  {" "}
+                  +{" "}
+                </button>
+                <button value={-1} onClick={handleVoteButton}>
+                  {" "}
+                  -{" "}
+                </button>
+              </div>
             </div>
           </div>
           <CommentsList article_id={article_id} />
