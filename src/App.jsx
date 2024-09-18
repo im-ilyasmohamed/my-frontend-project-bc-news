@@ -4,7 +4,6 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import ArticlesList from "./components/ArticlesList/articlesList";
 import ArticleIndividual from "./components/ArticleIndividual/ArticleIndividual";
-import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apiClient from "./util/my-axios-api";
