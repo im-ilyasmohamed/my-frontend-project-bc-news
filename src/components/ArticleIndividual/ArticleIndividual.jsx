@@ -6,6 +6,7 @@ function ArticleIndividual() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   useEffect(() => {
     // Fetch the article data using the article_id
     apiClient
@@ -23,6 +24,8 @@ function ArticleIndividual() {
       });
   }, []);
   function handleVoteButton(event) {
+    setError(null); // set error back to null
+
     // typeof is string, so make int
     const updateVote = parseInt(event.target.value);
 
@@ -40,6 +43,7 @@ function ArticleIndividual() {
       })
       .catch((error) => {
         console.error("Error updating votes:", error);
+        setError("Failed to update votes. Please try again.");
       });
   }
   return (
@@ -70,6 +74,8 @@ function ArticleIndividual() {
                   -{" "}
                 </button>
               </div>
+              {/* Error message */}
+              {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
           </div>
           <CommentsList article_id={article_id} />
