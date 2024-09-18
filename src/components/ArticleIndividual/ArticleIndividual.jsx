@@ -13,8 +13,6 @@ function ArticleIndividual() {
       .get(`/api/articles/${article_id}`)
       .then((response) => {
         const articleItem = response.data.articleItem[0];
-        console.log(articleItem);
-
         setArticle(articleItem);
         setLoading(false);
       })
