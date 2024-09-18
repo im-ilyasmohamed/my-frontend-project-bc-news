@@ -8,8 +8,6 @@ function CommentsList({ article_id }) {
       .get(`/api/articles/${article_id}/comments`)
       .then((response) => {
         const commentsList = response.data.commentItem;
-
-        console.log(commentsList);
         setComments(commentsList);
         setLoading(false);
       })
@@ -25,6 +23,7 @@ function CommentsList({ article_id }) {
         <p>Loading comments...</p>
       ) : comments && comments.length > 0 ? (
         <div>
+          <h2>Comments</h2>
           {comments.map((comment) => (
             <div key={comment.comment_id}>
               <h4>{comment.author}</h4>
