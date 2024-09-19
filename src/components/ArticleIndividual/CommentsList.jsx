@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../util/my-axios-api";
 function CommentsList({ article_id }) {
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState({});
   const [loading, setLoading] = useState(true);
   const [currentNewComment, setCurrentNewComment] = useState("");
   const [error, setError] = useState(null);
