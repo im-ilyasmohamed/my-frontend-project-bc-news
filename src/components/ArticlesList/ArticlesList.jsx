@@ -55,24 +55,26 @@ function ArticlesList({ topic = undefined }) {
   return (
     <div id="product-list-homepage">
       <div>
-        <p>Filter options:</p>
         {/* Dropdown for sorting */}
         <div>
           {topic === undefined && (
-            <select value={sortBy} onChange={handleSortChange}>
-              <option value="">Sort by...</option>
-              <option value="created_at">Date</option>
-              <option value="comment_count">Comment Count</option>
-              <option value="votes">Votes</option>
-            </select>
+            <>
+              <p>Filter options:</p>
+              <select value={sortBy} onChange={handleSortChange}>
+                <option value="">Sort by...</option>
+                <option value="created_at">Date</option>
+                <option value="comment_count">Comment Count</option>
+                <option value="votes">Votes</option>
+              </select>
+              {/* Button to toggle between ascending and descending order */}
+              <button onClick={toggleOrder}>
+                {order === "asc" ? "Ascending" : "Descending"}
+              </button>
+            </>
           )}
         </div>
-
-        {/* Button to toggle between ascending and descending order */}
-        <button onClick={toggleOrder}>
-          {order === "asc" ? "Ascending" : "Descending"}
-        </button>
       </div>
+
       {/* api Load states renders */}
       {loading ? (
         <p>Loading articles...</p>
