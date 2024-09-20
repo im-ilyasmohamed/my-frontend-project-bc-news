@@ -55,11 +55,11 @@ function ArticlesList({ topic = undefined }) {
   return (
     <div id="product-list-homepage">
       <div>
-        <p>Filter options:</p>
         {/* Dropdown for sorting */}
         <div>
           {topic === undefined && (
             <>
+              <p>Filter options:</p>
               <select value={sortBy} onChange={handleSortChange}>
                 <option value="">Sort by...</option>
                 <option value="created_at">Date</option>
