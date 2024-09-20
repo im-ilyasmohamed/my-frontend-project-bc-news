@@ -7,6 +7,7 @@ import ArticleIndividual from "./components/ArticleIndividual/ArticleIndividual"
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import apiClient from "./util/my-axios-api";
+import NotFound from "./components/ErrorHandling/NotFound";
 
 function App() {
   return (
@@ -48,6 +49,8 @@ function App() {
           path="/article/topic/football"
           element={<>{<ArticlesList topic="football" />}</>}
         />
+        {/* Other routes */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

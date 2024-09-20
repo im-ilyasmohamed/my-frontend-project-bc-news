@@ -8,7 +8,7 @@ function ArticlesList({ topic = undefined }) {
   const [order, setOrder] = useState("asc");
 
   useEffect(() => {
-    let apiEndpoint = "/api/articles";
+    let apiEndpoint = "/api/articles/";
     let params = {};
 
     if (topic) {
@@ -50,18 +50,23 @@ function ArticlesList({ topic = undefined }) {
   const toggleOrder = () => {
     setOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
+  // const handleSort(){} // can do front end sorting
 
   return (
     <div id="product-list-homepage">
       <div>
         <p>Filter options:</p>
         {/* Dropdown for sorting */}
-        <select value={sortBy} onChange={handleSortChange}>
-          <option value="">Sort by...</option>
-          <option value="created_at">Date</option>
-          <option value="comment_count">Comment Count</option>
-          <option value="votes">Votes</option>
-        </select>
+        <div>
+          {topic === undefined && (
+            <select value={sortBy} onChange={handleSortChange}>
+              <option value="">Sort by...</option>
+              <option value="created_at">Date</option>
+              <option value="comment_count">Comment Count</option>
+              <option value="votes">Votes</option>
+            </select>
+          )}
+        </div>
 
         {/* Button to toggle between ascending and descending order */}
         <button onClick={toggleOrder}>
