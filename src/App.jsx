@@ -15,6 +15,15 @@ function App() {
         <Link to="/">
           <button type="button">Home</button>
         </Link>
+        <Link to="/article/topic/cooking">
+          <button type="button">Cooking</button>
+        </Link>
+        <Link to="/article/topic/coding">
+          <button type="button">Coding</button>
+        </Link>
+        <Link to="/article/topic/football">
+          <button type="button">football</button>
+        </Link>
         <span> ...Header pending... </span>
       </div>
       <Routes>
@@ -26,6 +35,18 @@ function App() {
               <ArticleIndividual />
             </>
           }
+        />
+        <Route
+          path="/article/topic/cooking"
+          element={<>{<ArticlesList topic="cooking" />}</>}
+        />
+        <Route
+          path="/article/topic/coding"
+          element={<>{<ArticlesList topic="coding" />}</>}
+        />
+        <Route
+          path="/article/topic/football"
+          element={<>{<ArticlesList topic="football" />}</>}
         />
       </Routes>
     </div>

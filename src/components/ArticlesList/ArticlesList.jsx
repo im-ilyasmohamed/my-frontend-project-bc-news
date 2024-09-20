@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../util/my-axios-api";
 import ArticleCard from "./ArticleCard";
-function ArticlesList() {
+function ArticlesList({ topic = undefined }) {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    //
+    let apiEndpoint = "/api/articles";
+    if (topic) {
+      apiEndpoint = `/api/articles?topic=${topic}`;
+    }
+    console.log(apiEndpoint);
+
     apiClient
-      .get("/api/articles")
+      .get(apiEndpoint)
       .then((response) => {
         // handle success
-        setArticles(response.data.allArticles);
+        setArticles(response.data.allArticles || response.data.articlesByTopic); // two differenct property names
         setLoading(false);
       })
       .catch((error) => {
         // handle error
         setLoading(false);
       });
-  }, []);
+  }, [topic]);
 
   return (
     <div id="product-list-homepage">
