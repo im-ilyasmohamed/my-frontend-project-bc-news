@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../../util/my-axios-api";
 import ArticleCard from "./ArticleCard";
 function ArticlesList() {
-  const [articles, setArticles] = useState({});
+  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
