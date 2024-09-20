@@ -25,7 +25,6 @@ function App() {
         <Link to="/article/topic/football">
           <button type="button">football</button>
         </Link>
-        <span> ...Header pending... </span>
       </div>
       <Routes>
         <Route path="/" element={<ArticlesList />} />
